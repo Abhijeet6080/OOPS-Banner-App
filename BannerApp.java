@@ -2,25 +2,23 @@ import java.util.Scanner;
 
 public class BannerApp {
     public static void main(String[] args) {
-        // Create a Scanner object for user input
         Scanner sc = new Scanner(System.in);
 
-        // Input: Student Fee
-        System.out.print("Enter the Student Fee: ");
-        double fee = sc.nextDouble();
+        // Input height in cm
+        System.out.print("Enter your height in centimeters: ");
+        double heightCm = sc.nextDouble();
 
-        // Input: University Discount Percentage
-        System.out.print("Enter the University Discount Percent: ");
-        double discountPercent = sc.nextDouble();
+        // Step 1: Convert total cm to total inches
+        double totalInches = heightCm / 2.54;
 
-        // Step 1: Compute the discount amount
-        double discount = (fee * discountPercent) / 100;
+        // Step 2: Calculate feet (integer division)
+        int feet = (int) (totalInches / 12);
 
-        // Step 2: Compute final fee to be paid
-        double finalFee = fee - discount;
+        // Step 3: Calculate remaining inches
+        double inches = totalInches % 12;
 
         // Output exactly as required
-        System.out.println("The discount amount is INR " + (int)discount +" and final discounted fee is INR " + (int)finalFee);
+        System.out.printf("Your Height in cm is %.2f while in feet is %d and inches is %.2f%n", heightCm, feet, inches);
         
         sc.close();
     }
