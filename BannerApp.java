@@ -1,13 +1,16 @@
 public class BannerApp {
     public static void main(String[] args) {
-        double costPrice = 125.0;
-        double sellingPrice = 150.0;
+        // Total pens and total students as per the problem
+        int totalPens = 14;
+        int totalStudents = 3;
 
-        double profit = sellingPrice - costPrice;
-        // Calculation for profit percentage
-        double profitPercentage = (profit / costPrice) * 100;
+        // Using Division (/) to find the quantity of pens per student
+        int pensPerStudent = totalPens / totalStudents;
 
-        System.out.println("Profit: " + profit);
-        System.out.println("Profit Percentage: " + profitPercentage + "%");
+        // Using Modulus (%) to find the remaining non-distributed pens
+        int remainingPens = totalPens % totalStudents;
+
+        // Output exactly as required by your manual
+        System.out.println("The Pen Per Student is " + pensPerStudent + " and the remaining pen not distributed is " + remainingPens);
     }
 }
