@@ -12,5 +12,5 @@ public class BannerApp {
 
         // Step 4: Output exactly as required
         System.out.println("The discount amount is INR " + (int)discount + " and final discounted fee is INR " + (int)finalFee);
-    }
+}
 }
