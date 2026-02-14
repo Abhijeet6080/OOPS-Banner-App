@@ -1,13 +1,11 @@
 public class BannerApp {
     public static void main(String[] args) {
-        int costPrice = 129;
-        int sellingPrice = 191;
-        int profit = sellingPrice - costPrice;
-        // Type conversion to double for the percentage calculation
-        double profitPercentage = (profit / (double)costPrice) * 100;
-
-        // Requirement: Single print statement for multiline output
-        System.out.println("The Cost Price is INR " + costPrice + " and Selling Price is INR " + sellingPrice + 
-                        "\nThe Profit is INR " + profit + " and the Profit Percentage is " + profitPercentage);
+// Input kilometers as specified in your lab task
+        double kilometers = 10.8;
+        
+        // Manual hint: 1 km = 1.6 miles
+        double miles = kilometers * 1.6; 
+        
+        System.out.println("The distance " + kilometers + " km in miles is " + miles);
     }
 }
