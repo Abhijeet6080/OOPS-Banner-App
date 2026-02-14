@@ -1,11 +1,13 @@
 public class BannerApp {
     public static void main(String[] args) {
-// Input kilometers as specified in your lab task
-        double kilometers = 10.8;
-        
-        // Manual hint: 1 km = 1.6 miles
-        double miles = kilometers * 1.6; 
-        
-        System.out.println("The distance " + kilometers + " km in miles is " + miles);
+        double costPrice = 125.0;
+        double sellingPrice = 150.0;
+
+        double profit = sellingPrice - costPrice;
+        // Calculation for profit percentage
+        double profitPercentage = (profit / costPrice) * 100;
+
+        System.out.println("Profit: " + profit);
+        System.out.println("Profit Percentage: " + profitPercentage + "%");
     }
 }
