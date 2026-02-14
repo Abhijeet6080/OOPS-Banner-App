@@ -20,7 +20,7 @@ public class BannerApp {
         double finalFee = fee - discount;
 
         // Output exactly as required
-        System.out.println("The discount amount is INR " + (int)discount + " and final discounted fee is INR " + (int)finalFee);
+        System.out.println("The discount amount is INR " + (int)discount +" and final discounted fee is INR " + (int)finalFee);
         
         sc.close();
     }
