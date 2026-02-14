@@ -1,12 +1,16 @@
 public class BannerApp {
     public static void main(String[] args) {
-    int totalPens = 14;
-        int totalStudents = 3;
+        // Step 1: Initialize variables
+        double fee = 125000;
+        double discountPercent = 10;
 
-        // Using / for quantity and % for remainder
-        int pensPerStudent = totalPens / totalStudents;
-        int remainingPens = totalPens % totalStudents;
+        // Step 2: Compute discount amount
+        double discount = (fee * discountPercent) / 100;
 
-        System.out.println("The Pen Per Student is " + pensPerStudent + " and the remaining pen not distributed is " + remainingPens);
+        // Step 3: Compute final discounted fee
+        double finalFee = fee - discount;
+
+        // Step 4: Output exactly as required
+        System.out.println("The discount amount is INR " + (int)discount + " and final discounted fee is INR " + (int)finalFee);
     }
 }
