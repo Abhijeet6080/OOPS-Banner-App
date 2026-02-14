@@ -1,13 +1,25 @@
+import java.util.Scanner;
+
 public class BannerApp {
     public static void main(String[] args) {
-        int costPrice = 129;
-        int sellingPrice = 191;
-        int profit = sellingPrice - costPrice;
-        // Type conversion to double for the percentage calculation
-        double profitPercentage = (profit / (double)costPrice) * 100;
+        Scanner sc = new Scanner(System.in);
 
-        // Requirement: Single print statement for multiline output
-        System.out.println("The Cost Price is INR " + costPrice + " and Selling Price is INR " + sellingPrice + 
-                        "\nThe Profit is INR " + profit + " and the Profit Percentage is " + profitPercentage);
+        // Input height in cm
+        System.out.print("Enter your height in centimeters: ");
+        double heightCm = sc.nextDouble();
+
+        // Step 1: Convert total cm to total inches
+        double totalInches = heightCm / 2.54;
+
+        // Step 2: Calculate feet (integer division)
+        int feet = (int) (totalInches / 12);
+
+        // Step 3: Calculate remaining inches
+        double inches = totalInches % 12;
+
+        // Output exactly as required
+        System.out.printf("Your Height in cm is %.2f while in feet is %d and inches is %.2f%n", heightCm, feet, inches);
+        
+        sc.close();
     }
 }
