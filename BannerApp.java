@@ -1,19 +1,17 @@
 public class BannerApp {
     public static void main(String[] args) {
-        // UC3: Using String.join to build banner segments efficiently
-        // The first argument "" is the delimiter (empty string because we want letters to touch)
-        
-        String row1 = String.join("", "  *** ", "  *** ", " ***** ", "  **** ");
-        String row2 = String.join("", " * * ", " * * ", " * * ", " * ");
-        String row3 = String.join("", " * * ", " * * ", " ***** ", "  *** ");
-        String row4 = String.join("", " * * ", " * * ", " * ", "     * ");
-        String row5 = String.join("", "  *** ", "  *** ", " * ", " **** ");
+        // Goal: Storing all banner lines in a String array
+        String[] bannerLines = {
+            " OOOO   PPPP   SSSS ",
+            "O    O  P   P  S    ",
+            "O    O  PPPP   SSSS ",
+            "O    O  P          S",
+            " OOOO   P      SSSS "
+        };
 
-        // Printing the Banner
-        System.out.println(row1);
-        System.out.println(row2);
-        System.out.println(row3);
-        System.out.println(row4);
-        System.out.println(row5);
+        // Flow: Program uses a loop to iterate and print each line
+        for (String line : bannerLines) {
+            System.out.println(line);
+        }
     }
 }
