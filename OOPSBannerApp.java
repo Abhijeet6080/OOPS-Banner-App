@@ -1,4 +1,21 @@
 public class OOPSBannerApp {
+<<<<<<< HEAD
+    public static void main(String[] args) {
+        
+        // UC5: Inline Array Initialization
+        // We declare, initialize, and populate the array in one block
+        String[] lines = {
+            String.join("", "  *** ", "  *** ", "****** ", "  *****"),
+            String.join("", "** ** ", "** ** ", "** ** ", "** **"),
+            String.join("", "** ", "** ** ", "** ** ", "** **"),
+            String.join("", "** ", "** ** ", "****** ", "  ***"),
+            String.join("", "** ", "** ** ", "** ", "    **"),
+            String.join("", "** ** ", "** ** ", "** ", "    **"),
+            String.join("", "  *** ", "  *** ", "** ", "  *****")
+        };
+
+        // Enhanced for-loop remains the same for printing
+=======
     // Main method to run the banner display
     public static void main(String[] args) {
         
@@ -15,8 +32,13 @@ public class OOPSBannerApp {
         lines[6] = String.join(" ", "  ***", "   ***", " **", "     *****");
 
         // 3. Use a for-each loop to iterate through the array and print each line
+>>>>>>> origin/dev
         for (String line : lines) {
             System.out.println(line);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/dev
