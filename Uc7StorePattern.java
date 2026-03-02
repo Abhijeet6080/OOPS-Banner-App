@@ -1,4 +1,3 @@
-// 1. Renamed to use CamelCase (no hyphens allowed in Java class names)
 public class Uc7StorePattern {
 
     // Static Inner Class
@@ -6,7 +5,6 @@ public class Uc7StorePattern {
         private char character;
         private String[] pattern;
 
-        // 2. Constructor must match the class name EXACTLY (Capital C)
         public CharacterPattern(char character, String[] pattern) {
             this.character = character;
             this.pattern = pattern;
@@ -24,23 +22,55 @@ public class Uc7StorePattern {
     // Utility methods to create patterns
     public static CharacterPattern createO() {
         return new CharacterPattern('O', new String[]{
-            " ***** ",
-            "* *",
-            "* *",
-            "* *",
-            "* *",
-            " ***** "
+                "  *****  ",
+                " *     * ",
+                "*       *",
+                "*       *",
+                "*       *",
+                " *     * ",
+                "  *****  "
         });
     }
 
     public static CharacterPattern createP() {
         return new CharacterPattern('P', new String[]{
-            "*******",
-            "* *",
-            "* *",
-            "*******",
-            "* ",
-            "* "
+                "*******  ",
+                "*      * ",
+                "*      * ",
+                "*******  ",
+                "*        ",
+                "*        ",
+                "*        "
         });
+    }
+
+    public static CharacterPattern createS() {
+        return new CharacterPattern('S', new String[]{
+                " ******  ",
+                "*        ",
+                "*        ",
+                " *****   ",
+                "        *",
+                "        *",
+                " ******  "
+        });
+    }
+
+    public static void main(String[] args) {
+
+        CharacterPattern[] letters = {
+                createO(),
+                createO(),
+                createP(),
+                createS()
+        };
+
+        for (int i = 0; i < 7; i++) {
+            StringBuilder line = new StringBuilder();
+            for (CharacterPattern cp : letters) {
+                line.append(cp.getPattern()[i]).append("  ");
+            }
+            System.out.println(line);
+        }
     }
 }
