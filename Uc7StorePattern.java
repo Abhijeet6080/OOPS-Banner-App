@@ -1,76 +1,66 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class Uc7StorePattern {
 
-    // Static Inner Class
-    static class CharacterPattern {
-        private char character;
-        private String[] pattern;
+    // Method to build the map of character patterns
+    public static Map<Character, String[]> getCharacterPatterns() {
 
-        public CharacterPattern(char character, String[] pattern) {
-            this.character = character;
-            this.pattern = pattern;
-        }
+        Map<Character, String[]> patterns = new HashMap<>();
 
-        public char getCharacter() {
-            return character;
-        }
+        patterns.put('O', new String[]{
+                " ***** ",
+                "*     *",
+                "*     *",
+                "*     *",
+                "*     *",
+                "*     *",
+                " ***** "
+        });
 
-        public String[] getPattern() {
-            return pattern;
-        }
+        patterns.put('P', new String[]{
+                "****** ",
+                "*     *",
+                "*     *",
+                "****** ",
+                "*      ",
+                "*      ",
+                "*      "
+        });
+
+        patterns.put('S', new String[]{
+                " ***** ",
+                "*      ",
+                "*      ",
+                " ***** ",
+                "      *",
+                "      *",
+                " ***** "
+        });
+
+        return patterns;
     }
 
-    // Utility methods to create patterns
-    public static CharacterPattern createO() {
-        return new CharacterPattern('O', new String[]{
-                "  *****  ",
-                " *     * ",
-                "*       *",
-                "*       *",
-                "*       *",
-                " *     * ",
-                "  *****  "
-        });
-    }
+    // Method to render banner
+    public static void renderBanner(String message, Map<Character, String[]> patterns) {
 
-    public static CharacterPattern createP() {
-        return new CharacterPattern('P', new String[]{
-                "*******  ",
-                "*      * ",
-                "*      * ",
-                "*******  ",
-                "*        ",
-                "*        ",
-                "*        "
-        });
-    }
+        for (int i = 0; i < 7; i++) {
+            StringBuilder line = new StringBuilder();
 
-    public static CharacterPattern createS() {
-        return new CharacterPattern('S', new String[]{
-                " ******  ",
-                "*        ",
-                "*        ",
-                " *****   ",
-                "        *",
-                "        *",
-                " ******  "
-        });
+            for (char c : message.toCharArray()) {
+                line.append(patterns.get(c)[i]).append("  ");
+            }
+
+            System.out.println(line);
+        }
     }
 
     public static void main(String[] args) {
 
-        CharacterPattern[] letters = {
-                createO(),
-                createO(),
-                createP(),
-                createS()
-        };
+        Map<Character, String[]> patterns = getCharacterPatterns();
 
-        for (int i = 0; i < 7; i++) {
-            StringBuilder line = new StringBuilder();
-            for (CharacterPattern cp : letters) {
-                line.append(cp.getPattern()[i]).append("  ");
-            }
-            System.out.println(line);
-        }
+        String message = "OOPS";
+
+        renderBanner(message, patterns);
     }
 }
