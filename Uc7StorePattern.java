@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class OOPSBannerApp {
+public class Uc7StorePattern {
 
     // Method to build the map of character patterns
     public static Map<Character, String[]> getCharacterPatterns() {
