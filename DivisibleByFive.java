@@ -5,13 +5,19 @@ public class DivisibleByFive {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter a number: ");
-        int number = sc.nextInt();
+        System.out.print("Enter first number: ");
+        int number1 = sc.nextInt();
 
-        if (number % 5 == 0) {
-            System.out.println("Is the number " + number + " divisible by 5? Yes");
+        System.out.print("Enter second number: ");
+        int number2 = sc.nextInt();
+
+        System.out.print("Enter third number: ");
+        int number3 = sc.nextInt();
+
+        if (number1 < number2 && number1 < number3) {
+            System.out.println("Is the first number the smallest? Yes");
         } else {
-            System.out.println("Is the number " + number + " divisible by 5? No");
+            System.out.println("Is the first number the smallest? No");
         }
 
         sc.close();
