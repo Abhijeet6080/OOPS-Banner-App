@@ -2,22 +2,22 @@ import java.util.Scanner;
 
 public class SwapNumbers {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
 
-        // I/P => Create variables and take user input
+        Scanner sc = new Scanner(System.in);
+
         System.out.print("Enter first number: ");
-        int number1 = input.nextInt();
+        int number1 = sc.nextInt();
+
         System.out.print("Enter second number: ");
-        int number2 = input.nextInt();
+        int number2 = sc.nextInt();
 
-        // The Swap Logic (using a temporary variable)
-        int temp = number1; // Put number1 in the 'third cup'
-        number1 = number2;  // Move number2 into number1
-        number2 = temp;     // Take the value from the 'third cup' and put it in number2
+        // Swapping using a temporary variable
+        int temp = number1;
+        number1 = number2;
+        number2 = temp;
 
-        // O/P => The swapped numbers are ___ and ___
-        System.out.printf("The swapped numbers are %d and %d", number1, number2);
+        System.out.println("The swapped numbers are " + number1 + " and " + number2);
 
-        input.close();
+        sc.close();
     }
 }
