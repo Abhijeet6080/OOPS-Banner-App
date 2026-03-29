@@ -1,5 +1,5 @@
+package Level2;
 import java.util.Scanner;
-
 public class Que2 {
 
     public static void main(String[] args) {
