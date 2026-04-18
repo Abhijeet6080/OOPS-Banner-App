@@ -2,7 +2,7 @@ package Level2;
 
 import java.util.Scanner;
 
-public class Que7 {
+public class Que2 {
 
     // Method to find length without using length()
     public static int findLength(String str) {
