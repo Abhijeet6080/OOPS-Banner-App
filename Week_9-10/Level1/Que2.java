@@ -1,0 +1,56 @@
+package Level1;
+
+import java.util.Scanner;
+
+public class Que2 {
+
+    public static String createSubstring(String str, int start, int end) {
+        StringBuilder result = new StringBuilder();
+        for (int i = start; i < end; i++) {
+            result.append(str.charAt(i));
+        }
+        return result.toString();
+    }
+
+    public static boolean compareStrings(String str1, String str2) {
+        if (str1.length() != str2.length()) return false;
+
+        for (int i = 0; i < str1.length(); i++) {
+            if (str1.charAt(i) != str2.charAt(i)) return false;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+
+        // ✅ try-with-resources fixes the warning
+        try (Scanner sc = new Scanner(System.in)) {
+
+            System.out.print("Enter a string: ");
+            String text = sc.next();
+
+            System.out.print("Enter start index: ");
+            int start = sc.nextInt();
+
+            System.out.print("Enter end index: ");
+            int end = sc.nextInt();
+
+            if (start < 0 || end > text.length() || start >= end) {
+                System.out.println("Invalid indices!");
+                return;
+            }
+
+            String sub1 = createSubstring(text, start, end);
+            String sub2 = text.substring(start, end);
+
+            boolean isSame = compareStrings(sub1, sub2);
+
+            System.out.println("Substring using charAt(): " + sub1);
+            System.out.println("Substring using substring(): " + sub2);
+
+            System.out.println(isSame
+                ? "Both substrings are SAME."
+                : "Substrings are DIFFERENT.");
+        }
+    }
+}
