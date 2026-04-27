@@ -1,6 +1,17 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class TicTacToe {
+
+    // Method for UC3: Accept user slot input
+    public static int getUserSlot() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter slot number (1-9): ");
+        int slot = sc.nextInt();
+
+        return slot;
+    }
 
     public static void main(String[] args) {
 
@@ -27,24 +38,19 @@ public class TicTacToe {
 
         boolean userStarts = random.nextBoolean();
 
-        char userSymbol;
-        char computerSymbol;
-        String currentPlayer;
+        char userSymbol = userStarts ? 'X' : 'O';
+        char computerSymbol = userStarts ? 'O' : 'X';
 
-        if (userStarts) {
-            userSymbol = 'X';
-            computerSymbol = 'O';
-            currentPlayer = "User";
-        } else {
-            userSymbol = 'O';
-            computerSymbol = 'X';
-            currentPlayer = "Computer";
-        }
+        String currentPlayer = userStarts ? "User" : "Computer";
 
-        // Display toss result
         System.out.println("\nToss Result:");
         System.out.println("User Symbol: " + userSymbol);
         System.out.println("Computer Symbol: " + computerSymbol);
         System.out.println("First Turn: " + currentPlayer);
+
+        // UC3: Accept user slot
+        int userSlot = getUserSlot();
+
+        System.out.println("User selected slot: " + userSlot);
     }
 }
