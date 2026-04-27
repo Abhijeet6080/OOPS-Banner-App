@@ -16,6 +16,18 @@ public class TicTacToe {
         return new int[] { row, col };
     }
 
+    // UC5: Validate move
+    public static boolean isValidMove(char[][] board, int row, int col) {
+
+        // Check bounds
+        if (row < 0 || row > 2 || col < 0 || col > 2) {
+            return false;
+        }
+
+        // Check if cell is empty
+        return board[row][col] == '-';
+    }
+
     public static void main(String[] args) {
 
         try (Scanner sc = new Scanner(System.in)) {
@@ -38,7 +50,7 @@ public class TicTacToe {
                 System.out.println();
             }
 
-            // UC2: Tossss
+            // UC2: Toss
             Random random = new Random();
 
             boolean userStarts = random.nextBoolean();
@@ -53,15 +65,23 @@ public class TicTacToe {
             System.out.println("Computer Symbol: " + computerSymbol);
             System.out.println("First Turn: " + currentPlayer);
 
-            // UC3
+            // UC3: Get slot
             int userSlot = getUserSlot(sc);
 
-            // UC4
+            // UC4: Convert slot
             int[] position = convertSlotToIndex(userSlot);
 
-            System.out.println("Converted Position:");
-            System.out.println("Row = " + position[0]);
-            System.out.println("Column = " + position[1]);
+            int row = position[0];
+            int col = position[1];
+
+            // UC5: Validate move
+            boolean valid = isValidMove(board, row, col);
+
+            if (valid) {
+                System.out.println("Valid move.");
+            } else {
+                System.out.println("Invalid move.");
+            }
         }
     }
 }
