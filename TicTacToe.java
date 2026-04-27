@@ -4,14 +4,10 @@ import java.util.Scanner;
 public class TicTacToe {
 
     // Method for UC3: Accept user slot input
-    public static int getUserSlot() {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Enter slot number (1-9): ");
-        int slot = sc.nextInt();
-
-        return slot;
-    }
+    public static int getUserSlot(Scanner sc) {
+    System.out.print("Enter slot number (1-9): ");
+    return sc.nextInt();
+}
 
     public static void main(String[] args) {
 
