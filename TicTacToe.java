@@ -38,7 +38,7 @@ public class TicTacToe {
                 System.out.println();
             }
 
-            // UC2: Toss
+            // UC2: Tossss
             Random random = new Random();
 
             boolean userStarts = random.nextBoolean();
