@@ -5,9 +5,9 @@ public class TicTacToe {
 
     // Method for UC3: Accept user slot input
     public static int getUserSlot(Scanner sc) {
-    System.out.print("Enter slot number (1-9): ");
-    return sc.nextInt();
-}
+        System.out.print("Enter slot number (1-9): ");
+        return sc.nextInt();
+    }
 
     public static void main(String[] args) {
 
@@ -45,8 +45,10 @@ public class TicTacToe {
         System.out.println("First Turn: " + currentPlayer);
 
         // UC3: Accept user slot
-        int userSlot = getUserSlot();
+        Scanner sc = new Scanner(System.in);
+        int userSlot = getUserSlot(sc);
 
         System.out.println("User selected slot: " + userSlot);
+        sc.close();
     }
 }
