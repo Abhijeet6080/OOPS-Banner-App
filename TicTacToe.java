@@ -15,10 +15,9 @@ public class TicTacToe {
     }
 
     public static boolean isValidMove(char[][] board, int row, int col) {
-        if (row < 0 || row > 2 || col < 0 || col > 2) {
-            return false;
-        }
-        return board[row][col] == '-';
+        return row >= 0 && row < 3 &&
+            col >= 0 && col < 3 &&
+            board[row][col] == '-';
     }
 
     public static void placeMove(char[][] board, int row, int col, char symbol) {
@@ -27,31 +26,39 @@ public class TicTacToe {
 
     public static void printBoard(char[][] board) {
         System.out.println("\nCurrent Board:");
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
                 System.out.print(board[i][j] + " ");
             }
             System.out.println();
         }
     }
 
-    // UC7: Computer random move
     public static void computerMove(char[][] board, char computerSymbol) {
         Random random = new Random();
 
         while (true) {
-            int slot = random.nextInt(9) + 1; // 1–9
-            int[] position = convertSlotToIndex(slot);
+            int slot = random.nextInt(9) + 1;
+            int[] pos = convertSlotToIndex(slot);
 
-            int row = position[0];
-            int col = position[1];
-
-            if (isValidMove(board, row, col)) {
-                placeMove(board, row, col, computerSymbol);
-                System.out.println("\nComputer chose slot: " + slot);
+            if (isValidMove(board, pos[0], pos[1])) {
+                placeMove(board, pos[0], pos[1], computerSymbol);
+                System.out.println("Computer chose slot: " + slot);
                 break;
             }
         }
+    }
+
+    // Temporary draw checker for UC8 loop testing
+    public static boolean isBoardFull(char[][] board) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (board[i][j] == '-') {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public static void main(String[] args) {
@@ -60,37 +67,52 @@ public class TicTacToe {
 
             char[][] board = new char[3][3];
 
-            for (int i = 0; i < board.length; i++) {
-                for (int j = 0; j < board[i].length; j++) {
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
                     board[i][j] = '-';
                 }
             }
 
-            printBoard(board);
-
             Random random = new Random();
-            boolean userStarts = random.nextBoolean();
+            boolean userTurn = random.nextBoolean();
 
-            char userSymbol = userStarts ? 'X' : 'O';
-            char computerSymbol = userStarts ? 'O' : 'X';
+            char userSymbol = userTurn ? 'X' : 'O';
+            char computerSymbol = userTurn ? 'O' : 'X';
 
-            System.out.println("\nUser Symbol: " + userSymbol);
+            System.out.println("User Symbol: " + userSymbol);
             System.out.println("Computer Symbol: " + computerSymbol);
 
-            // User Move
-            int userSlot = getUserSlot(sc);
-            int[] userPos = convertSlotToIndex(userSlot);
+            printBoard(board);
 
-            if (isValidMove(board, userPos[0], userPos[1])) {
-                placeMove(board, userPos[0], userPos[1], userSymbol);
+            // UC8: Continuous Game Loop
+            while (true) {
+
+                if (userTurn) {
+                    int slot = getUserSlot(sc);
+                    int[] pos = convertSlotToIndex(slot);
+
+                    if (isValidMove(board, pos[0], pos[1])) {
+                        placeMove(board, pos[0], pos[1], userSymbol);
+                    } else {
+                        System.out.println("Invalid Move. Try Again.");
+                        continue;
+                    }
+
+                } else {
+                    computerMove(board, computerSymbol);
+                }
+
+                printBoard(board);
+
+                // Temporary stop condition until win logic added
+                if (isBoardFull(board)) {
+                    System.out.println("Game Over - Draw!");
+                    break;
+                }
+
+                // Switch turns
+                userTurn = !userTurn;
             }
-
-            printBoard(board);
-
-            // Computer Move
-            computerMove(board, computerSymbol);
-
-            printBoard(board);
         }
     }
 }
