@@ -1,7 +1,7 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class TicTacToe {
+public class TicTacToe { // 
 
     public static int getUserSlot(Scanner sc) {
         System.out.print("Enter slot number (1-9): ");
