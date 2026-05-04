@@ -18,14 +18,26 @@ public class TicTacToe {
 
     // UC5: Validate move
     public static boolean isValidMove(char[][] board, int row, int col) {
-
-        // Check bounds
         if (row < 0 || row > 2 || col < 0 || col > 2) {
             return false;
         }
-
-        // Check if cell is empty
         return board[row][col] == '-';
+    }
+
+    // UC6: Place move on board
+    public static void placeMove(char[][] board, int row, int col, char symbol) {
+        board[row][col] = symbol;
+    }
+
+    // Display board
+    public static void printBoard(char[][] board) {
+        System.out.println("\nCurrent Board:");
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                System.out.print(board[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
 
     public static void main(String[] args) {
@@ -41,44 +53,29 @@ public class TicTacToe {
                 }
             }
 
-            // Display board
-            System.out.println("Empty Tic-Tac-Toe Board:");
-            for (int i = 0; i < board.length; i++) {
-                for (int j = 0; j < board[i].length; j++) {
-                    System.out.print(board[i][j] + " ");
-                }
-                System.out.println();
-            }
+            printBoard(board);
 
             // UC2: Toss
             Random random = new Random();
-
             boolean userStarts = random.nextBoolean();
 
             char userSymbol = userStarts ? 'X' : 'O';
             char computerSymbol = userStarts ? 'O' : 'X';
 
-            String currentPlayer = userStarts ? "User" : "Computer";
-
-            System.out.println("\nToss Result:");
-            System.out.println("User Symbol: " + userSymbol);
+            System.out.println("\nUser Symbol: " + userSymbol);
             System.out.println("Computer Symbol: " + computerSymbol);
-            System.out.println("First Turn: " + currentPlayer);
 
-            // UC3: Get slot
+            // UC3 + UC4
             int userSlot = getUserSlot(sc);
-
-            // UC4: Convert slot
             int[] position = convertSlotToIndex(userSlot);
 
             int row = position[0];
             int col = position[1];
 
-            // UC5: Validate move
-            boolean valid = isValidMove(board, row, col);
-
-            if (valid) {
-                System.out.println("Valid move.");
+            // UC5 + UC6
+            if (isValidMove(board, row, col)) {
+                placeMove(board, row, col, userSymbol);
+                printBoard(board);
             } else {
                 System.out.println("Invalid move.");
             }
