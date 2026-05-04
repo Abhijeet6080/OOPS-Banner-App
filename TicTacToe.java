@@ -1,7 +1,7 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class TicTacToe { // hello
+public class TicTacToe {
 
     public static int getUserSlot(Scanner sc) {
         System.out.print("Enter slot number (1-9): ");
@@ -9,15 +9,13 @@ public class TicTacToe { // hello
     }
 
     public static int[] convertSlotToIndex(int slot) {
-        int row = (slot - 1) / 3;
-        int col = (slot - 1) % 3;
-        return new int[] { row, col };
+        return new int[] { (slot - 1) / 3, (slot - 1) % 3 };
     }
 
     public static boolean isValidMove(char[][] board, int row, int col) {
         return row >= 0 && row < 3 &&
-            col >= 0 && col < 3 &&
-            board[row][col] == '-';
+               col >= 0 && col < 3 &&
+               board[row][col] == '-';
     }
 
     public static void placeMove(char[][] board, int row, int col, char symbol) {
@@ -49,7 +47,6 @@ public class TicTacToe { // hello
         }
     }
 
-    // Temporary draw checker for UC8 loop testing
     public static boolean isBoardFull(char[][] board) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -59,6 +56,44 @@ public class TicTacToe { // hello
             }
         }
         return true;
+    }
+
+    // UC9: Check Winning Condition
+    public static boolean checkWinner(char[][] board, char symbol) {
+
+        // Check rows
+        for (int i = 0; i < 3; i++) {
+            if (board[i][0] == symbol &&
+                board[i][1] == symbol &&
+                board[i][2] == symbol) {
+                return true;
+            }
+        }
+
+        // Check columns
+        for (int j = 0; j < 3; j++) {
+            if (board[0][j] == symbol &&
+                board[1][j] == symbol &&
+                board[2][j] == symbol) {
+                return true;
+            }
+        }
+
+        // Check main diagonal
+        if (board[0][0] == symbol &&
+            board[1][1] == symbol &&
+            board[2][2] == symbol) {
+            return true;
+        }
+
+        // Check anti-diagonal
+        if (board[0][2] == symbol &&
+            board[1][1] == symbol &&
+            board[2][0] == symbol) {
+            return true;
+        }
+
+        return false;
     }
 
     public static void main(String[] args) {
@@ -84,7 +119,6 @@ public class TicTacToe { // hello
 
             printBoard(board);
 
-            // UC8: Continuous Game Loop
             while (true) {
 
                 if (userTurn) {
@@ -93,6 +127,13 @@ public class TicTacToe { // hello
 
                     if (isValidMove(board, pos[0], pos[1])) {
                         placeMove(board, pos[0], pos[1], userSymbol);
+
+                        if (checkWinner(board, userSymbol)) {
+                            printBoard(board);
+                            System.out.println("User Wins!");
+                            break;
+                        }
+
                     } else {
                         System.out.println("Invalid Move. Try Again.");
                         continue;
@@ -100,17 +141,21 @@ public class TicTacToe { // hello
 
                 } else {
                     computerMove(board, computerSymbol);
+
+                    if (checkWinner(board, computerSymbol)) {
+                        printBoard(board);
+                        System.out.println("Computer Wins!");
+                        break;
+                    }
                 }
 
                 printBoard(board);
 
-                // Temporary stop condition until win logic added
                 if (isBoardFull(board)) {
                     System.out.println("Game Over - Draw!");
                     break;
                 }
 
-                // Switch turns
                 userTurn = !userTurn;
             }
         }
